@@ -1,0 +1,131 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background: #0E0E0E;
+  color: #F8F6F1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* Glow background */
+.glow {
+  position: fixed;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(ellipse, rgba(81,114,177,0.18) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main content */
+main {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+h1 span {
+  color: #5172b1;
+}
+
+p {
+  color: #888;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 20px;
+  border-top: 0.5px solid rgba(255,255,255,0.07);
+  font-size: 10px;
+  color: #555;
+  z-index: 1;
+}
+
+footer a {
+  color: #5172b1;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #7a96cc;
+}
+
+/* Animations — empieza invisible */
+.anim-1,
+.anim-2,
+.anim-3 {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.anim-1 { animation: fadeUp 0.6s ease forwards 0.2s; }
+.anim-2 { animation: fadeUp 0.6s ease forwards 0.45s; }
+.anim-3 { animation: fadeUp 0.5s ease forwards 0.7s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glow pulse */
+.glow {
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+/* Tablet y desktop */
+@media (min-width: 600px) {
+  .glow {
+    width: 600px;
+    height: 600px;
+  }
+
+  h1 { font-size: 32px; }
+  p  { font-size: 13px; }
+
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px 28px;
+    font-size: 11px;
+  }
+}
